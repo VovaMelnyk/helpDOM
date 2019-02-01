@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>DOM help</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+        <header class="header" id='top'>
+            <h1 class="main-title">DOM help</h1>
+            <nav class="nav">
+                <ol class="menu">
+                    <li class="menu__item">
+                        <a href="#select" class="menu__link">Выбор елемента</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#atr" class="menu__link">Работа с атрибутами</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#classes" class="menu__link">Методы для работы с классами элемента</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#paste" class="menu__link">Создание и вставка DOM узлов</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#delete" class="menu__link">Удаление</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#content" class="menu__link">Получаем и вставляем контент</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#data" class="menu__link">DATA-атрибуты</a>
+                    </li>
+                    <li class="menu__item">
+                        <a href="#navigation" class="menu__link">Навигация по дом</a>
+                    </li>
+                </ol>
+            </nav>
+        </header>
+        <main class="main">
+            <section id='select'>
+                <article class="article">
+                    <h2 class="article__title">Выбор елемента</h2>
+                    <h3 class="article__subtitle">Новые методы</h3>
+                    <p class="article__text"><span class="code">elem.querySelector(selector)</span> Используется когда мы заведомо знаем, что подходящий элемент только <span class="attention">один.</span> </p>
+                    <ul class="features">
+                        <li class="features__item">Возвращает не все, а только первый элемент, соответствующий CSS-селектору selector. Иначе говоря – ищется только первое совпадение, после чего поиск прекращается.</li>
+                        <li class="features__item">Если ничего не найдено, вернет <span class="attention">null.</span></li>
+                    </ul>
+                    <p class="article__text"><span class="code">elem.querySelectorAll(selector)</span> Используется когда мы заведомо знаем, что подходящих элементов <span class="attention">более одного.</span> </p>
+                    <ul class="features">
+                        <li class="features__item">Возвращает псевдомассив всех элементов внутри elem, удовлетворяющих CSS-селектору selector.</li>
+                        <li class="features__item">Псевдо-классы в selector, такие как :hover и :active, также поддерживаются.</li>
+                        <li class="features__item">Если ничего не найдено вернет <span class="attention">пустой массив.</span></li>
+                    </ul>
+                    <h3 class="article__subtitle">Устаревшие методы</h3>
+                    <p class="article__text"><span class="code">document.getElementById(id)</span> Выбирает дом узел по идентификатору id. Возвращает ссылку на найденый DOM-узел или null если ничего не найдено.</p>
+                    <p class="article__text"><span class="code">elem.getElementsByTagName(tag)</span> Ищет все элементы с заданным тегом tag внутри элемента elem и возвращает их в виде списка</p>
+                    <p class="article__text"><span class="code">elem.getElementsByClassName(cls)</span> Возвращает коллекцию элементов с классом cls. Находит элемент и в том случае, если у него несколько классов, а искомый – один из них.</p>
+                </article>
+            </section>
+            <section id='atr'>
+                <article class="article">
+                    <h2 class="article__title">Работа с атрибутами</h2>
+                    <p class="article__text">Атрибут это ключ объекта, поэтому можно обращатья/изменять значения к атрибуту по синтаксису объект.ключ</p>
+                    <p class="article__text">
+                        <span class="code">elem.hasAttribute(name)</span>Проверяет наличие аттрибута, <span class="attention">ВОЗВРАЩАЕТ TRUE/FALSE</span>
+                    </p>
+                    <p class="article__text">
+                        <span class="code">elem.getAttribute(name)</span>
+                        <span class="attention">ПОЛУЧАЕТ</span>значение атрибута и возвращает его
+                    </p>
+                    <p class="article__text">
+                        <span class="code">elem.setAttribute(name, value)</span>
+                        <span class="attention">УСТАНАВЛИВАЕТ</span>атрибут
+                    </p>
+                    <p class="article__text">
+                        <span class="code">elem.attr = '...'</span>
+                        обращаемся по ключу и устанавливает атрибут
+                    </p>
+                    <p class="article__text">
+                        <span class="code">elem.removeAttribute(name)</span>
+                        <span class="attention">УДАЛЯЕТ</span> атрибут
+                    </p>
+                    <p class="article__text">
+                        <span class="code">elem.attributes</span>
+                        свойство, возвращает <span class="attention">КОЛЛЕКЦИЮ</span> всех атрибутов элемента
+                    </p>
+                </article>
+            </section>
+            <section id='classes'>
+                <article class="article">
+                    <h2 class="article__title">Методы для работы с классами элемента</h2>
+                    <p class="article__text">
+                        <span class="code">elem.classList.contains('cls')</span>
+                        проверяет есть ли такой класс в значение атрибута class="" элемента <span class="attention"> ВОЗВРАЩАЕТ TRUE/FALSE </span>
+                    </p>
+                    <p class="article__text">
+                        <span class="code">elem.classList.add('cls')</span>
+                        добавляет класс cls в значение атрибута class="" элемента
+                    </p>
+                    <p class="article__text">
+                        <span class="code">elem.classList.remove('cls')</span>
+                        удаляет класс cls в значение атрибута class="" элемента
+                    </p>
+                    <p class="article__text">
+                        <span class="code">elem.classList.toggle('cls')</span>
+                        если класса cls нет, добавляет его, если есть - удаляет.
+                    </p>
+                    <p class="article__text">
+                        <span class="code">elem.classList.length</span>
+                        считает количество классов у елемента
+                    </p>
+                </article>
+            </section>
+            <section id='paste'>
+                <article class="article">
+                    <h2 class="article__title">Создание и вставка DOM узлов</h2>
+                    <h3 class="article__subtitle">Создание</h3>
+                    <p class="article__text">
+                        <span class="code">document.createElement("тег")</span>
+                        создаст HTML тег указанный аргументом
+                    </p>
+                    <p class="article__text">
+                        <span class="code">innerHTML += `<тег> контент </тег>`
+                        </span>
+                        пишем строку браузер преобразует в валидный код
+                    </p>
+                    <h3 class="article__subtitle">Вставка</h3>
+                    <p class="article__text">
+                        Сперва указываем <span class='attention'>РОДИТЕЛЯ</span> вставки затем <span class='attention'>КУДА</span> вставляем затем <span class='attention'>КАКОЙ</span> елемент
+                    </p>
+                    <p class="article__text">
+                       1-родитель 2-место вставки 3-созданный елемент
+                    </p>
+                    <p class="article__text">
+                        <span class="code">node.append(nodes)</span>
+                        добавляет nodes в <span class="attention">КОНЕЦ</span>  node
+                    </p>
+                    <p class="article__text">
+                        <span class="code">node.prepend(nodes)</span>
+                        добавляет nodes в <span class="attention">НАЧАЛО</span> node
+                    </p>
+                    <p class="article__text">
+                        <span class="code">node.after(nodes)</span>
+                        добавляет nodes <span class="attention"> ПОСЛЕ </span> узла node
+                    </p>
+                    <p class="article__text">
+                        <span class="code">node.before(nodes)</span>
+                        добавляет nodes <span class="attention"> ПЕРЕД </span> узлом node
+                    </p>
+                    <p class="article__text">
+                        <span class="code">node.replaceWith(nodes)</span>
+                        добавляет nodes <span class="attention"> ВМЕСТО </span> node
+                    </p>
+                </article>
+            </section>
+            <section id='delete'>
+                <article class="article">
+                    <h2 class="article__title">Удаление</h2>
+                    <p class="article__text">
+                        <span class="code">
+                            elem.remove() 
+                        </span>
+                        - удаляет elem из DOM
+                    </p>
+                    <p class="article__text">
+                        <span class="code">
+                            elem.remove("elem")
+                        </span>
+                        - удаляет elem который указан аргументом из elem-который указан вначале. Например если нужно удалить дочерний елемент , который входит в состав родительского елемента
+                    </p>
+                </article>
+            </section>
+            <section id='data'>
+                <article class="article">
+                    <h2 class="article__title">DATA-атрибуты</h2>
+                    <p class="article__text">В HTML5 можно создавать произвольный атрибут и получать значения этого атрибута в JavaScript.
+                        </p>
+                        <p class="article__text">
+                            <ul class="example">
+                                <li class="example__item">Создается атрибут date, к корню слова date через дефис дописывают произвольный суффикс (например - data-color).</li>
+                                <li class="example__item">Созданному атрибуту присваивается значение (например-data-color='red') </li>
+                                <li class="example__item">В JavaScript обращаемся к елементу</li>
+                                <li class="example__item">
+                                В JavaScript для получения значения атрибута data пишем elem.dataset.color
+                                </li>
+                            </ul>
+                        </p>
+                </article>
+            </section>
+            <section id='navigation'>
+                <article class="article">
+                    <h2 class="article__title">Навигация по дом</h2>
+                    <h3 class="article__subtitle">
+                        Родитель
+                    </h3>
+                    <p class="article__text">
+                        <span class="code">elem.parentNode</span>
+                        Выберет <span class="attention"> РОДИТЕЛЯ </span> elem
+                    </p>
+                    <h3 class="article__subtitle">
+                        Дочерние елементы
+                    </h3>
+                    <p class="article__text">
+                        <span class="code">elem.children</span>
+                        Псевдо-массив хранит только <span class="attention"> ДОЧЕРНИЕ УЗЛЫ-ЭЛЕМЕНТЫ,</span> то есть <span class="attention"> ТЕГИ </span>
+                    </p>
+                    <p class="article__text">
+                        <span class="code">elem.childNodes</span>
+                        	Псевдо-массив хранит <span class="attention"> ВСЕ ДОЧЕРНИЕ </span> элементы, то есть <span class="attention"> ТЕГИ </span> и <span class="attention"> ТЕКСТОВЫЕ </span> узлы
+                    </p>
+                    <h3 class="article__subtitle">
+                        Первый внутри родителя
+                    </h3>
+                    <p class="article__text">
+                        <span class="code">
+                            elem.firstElementChild
+                        </span>
+                        Выберет <span class="attention"> ПЕРВЫЙ ДОЧЕРНИЙ ЭЛЕМЕНТ </span> внутри elem, то есть <span class="attention"> ТЕГ </span>
+                    </p>
+                    <p class="article__text">
+                        <span class="code">
+                            elem.firstChild
+                        </span>
+                        Выберет <span class="attention"> ПЕРВЫЙ ДОЧЕРНИЙ </span> элемент внутри elem, включая <span class="attention"> ТЕКСТОВЫЕ </span> узлы.
+                    </p>
+                    <h3 class="article__subtitle">
+                        Последний внутри родителя
+                    </h3>
+                    <p class="article__text">
+                        <span class="code">elem.lastElementChild</span>
+                        Выберет <span class="attention"> ПОСЛЕДНИЙ ДОЧЕРНИЙ ЭЛЕМЕНТ </span> внутри elem. то есть <span class="attention"> ТЕГ </span>
+                    </p>
+                    <p class="article__text">
+                        <span class="code">elem.lastChild</span>
+                        Выберет <span class="attention"> ПОСЛЕДНИЙ ДОЧЕРНИЙ </span>элемент внутри elem, включая <span class="attention"> ТЕКСТОВЫЕ </span> узлы.
+                    </p>
+                    <h3 class="article__subtitle">
+                       Элемент слева
+                    </h3>
+                    <p class="article__text">
+                        <span class="code">
+                            elem.previousElementSibling
+                        </span>
+                        Выберет <span class="attention"> ЭЛЕМЕНТ </span> "слева" от elem (его предыдущего соседа)
+                    </p>
+                    <p class="article__text">
+                        <span class="code">
+                            elem.previousSibling
+                        </span>
+                        Выберет элемент "слева" от elem (его предыдущего соседа) включая <span class="attention"> ТЕКСТОВЫЕ </span> узлы
+                    </p>
+                    <h3 class="article__subtitle">
+                        Элемент справа
+                    </h3>
+                    <p class="article__text">
+                        <span class="code">
+                            elem.nextElementSibling
+                        </span>
+                        Выберет <span class="attention"> ЭЛЕМЕНТ </span> "справа" от elem (его предыдущего соседа)
+                    </p>
+                    <p class="article__text">
+                        <span class="code">
+                            elem.nextSibling
+                        </span>
+                        Выберет элемент "справа" от elem (его следующего соседа) включая <span class="attention"> ТЕКСТОВЫЕ </span> узлы
+                    </p>
+                </article>
+            </section>
+            <a class="top" href="#top">></a>
+        </main>
+    </div>
+    </div>
+   
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
